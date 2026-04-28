@@ -1,769 +1,381 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <meta name="description" content="An Van Dung - Java Developer & Tech Lead with expertise in Microservices, Spring Boot, and AI Integration">
-    <meta name="keywords" content="Java, Tech Lead, Spring Boot, Microservices, AI, Cloud Architecture">
-    <title>An Van Dung - Java Developer & Tech Lead</title>
-    
-    <style>
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
-
-        :root {
-            --primary-color: #1F4E78;
-            --secondary-color: #2E5C8A;
-            --accent-color: #0066CC;
-            --text-dark: #333333;
-            --text-light: #666666;
-            --bg-light: #f8f9fa;
-            --border-color: #e0e0e0;
-        }
-
-        body {
-            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-            line-height: 1.6;
-            color: var(--text-dark);
-            background-color: #ffffff;
-        }
-
-        /* Navigation */
-        nav {
-            background-color: var(--primary-color);
-            padding: 1rem 0;
-            position: sticky;
-            top: 0;
-            z-index: 100;
-            box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        nav .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        nav .logo {
-            color: white;
-            font-size: 1.5rem;
-            font-weight: bold;
-            text-decoration: none;
-        }
-
-        nav ul {
-            list-style: none;
-            display: flex;
-            gap: 2rem;
-        }
-
-        nav a {
-            color: white;
-            text-decoration: none;
-            transition: color 0.3s;
-        }
-
-        nav a:hover {
-            color: #ffeb3b;
-        }
-
-        /* Container */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 2rem;
-        }
-
-        /* Hero Section */
-        .hero {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 5rem 2rem;
-            text-align: center;
-        }
-
-        .hero-content {
-            max-width: 800px;
-            margin: 0 auto;
-        }
-
-        .hero img {
-            width: 150px;
-            height: 150px;
-            border-radius: 50%;
-            border: 5px solid white;
-            margin-bottom: 2rem;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.2);
-        }
-
-        .hero h1 {
-            font-size: 3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .hero .subtitle {
-            font-size: 1.3rem;
-            margin-bottom: 1rem;
-            opacity: 0.95;
-        }
-
-        .hero p {
-            font-size: 1rem;
-            line-height: 1.8;
-            margin-bottom: 2rem;
-            opacity: 0.9;
-        }
-
-        .contact-info {
-            display: flex;
-            justify-content: center;
-            gap: 2rem;
-            margin-top: 2rem;
-            font-size: 0.95rem;
-        }
-
-        .contact-info a {
-            color: white;
-            text-decoration: none;
-            transition: opacity 0.3s;
-        }
-
-        .contact-info a:hover {
-            opacity: 0.8;
-            text-decoration: underline;
-        }
-
-        /* Section Styling */
-        section {
-            padding: 4rem 2rem;
-        }
-
-        section h2 {
-            font-size: 2.5rem;
-            margin-bottom: 3rem;
-            color: var(--primary-color);
-            text-align: center;
-            position: relative;
-            padding-bottom: 1rem;
-        }
-
-        section h2::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 3px;
-            background-color: var(--accent-color);
-        }
-
-        /* Skills Section */
-        #skills {
-            background-color: var(--bg-light);
-        }
-
-        .skills-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 2rem;
-        }
-
-        .skill-category {
-            background: white;
-            padding: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .skill-category h3 {
-            color: var(--primary-color);
-            margin-bottom: 1rem;
-            font-size: 1.2rem;
-        }
-
-        .skill-category ul {
-            list-style: none;
-        }
-
-        .skill-category li {
-            padding: 0.5rem 0;
-            color: var(--text-light);
-        }
-
-        .skill-category li::before {
-            content: '✓ ';
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-right: 0.5rem;
-        }
-
-        /* Experience Section */
-        .experience-item {
-            background: white;
-            padding: 2rem;
-            margin-bottom: 2rem;
-            border-radius: 8px;
-            box-shadow: 0 2px 10px rgba(0,0,0,0.1);
-            border-left: 5px solid var(--secondary-color);
-        }
-
-        .experience-item h3 {
-            color: var(--primary-color);
-            font-size: 1.3rem;
-            margin-bottom: 0.5rem;
-        }
-
-        .experience-item .period {
-            color: var(--accent-color);
-            font-weight: bold;
-            margin-bottom: 1rem;
-            font-size: 0.95rem;
-        }
-
-        .experience-item ul {
-            margin-left: 1.5rem;
-            color: var(--text-light);
-        }
-
-        .experience-item li {
-            margin-bottom: 0.5rem;
-            line-height: 1.6;
-        }
-
-        /* Projects Section */
-        #projects {
-            background-color: var(--bg-light);
-        }
-
-        .projects-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
-            gap: 2rem;
-        }
-
-        .project-card {
-            background: white;
-            border-radius: 8px;
-            overflow: hidden;
-            box-shadow: 0 4px 15px rgba(0,0,0,0.1);
-            transition: transform 0.3s, box-shadow 0.3s;
-        }
-
-        .project-card:hover {
-            transform: translateY(-5px);
-            box-shadow: 0 8px 20px rgba(0,0,0,0.15);
-        }
-
-        .project-card-header {
-            background: linear-gradient(135deg, var(--primary-color) 0%, var(--secondary-color) 100%);
-            color: white;
-            padding: 1.5rem;
-            min-height: 100px;
-            display: flex;
-            align-items: flex-end;
-        }
-
-        .project-card-header h3 {
-            font-size: 1.3rem;
-        }
-
-        .project-card-body {
-            padding: 1.5rem;
-        }
-
-        .project-tech {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 0.5rem;
-            margin-bottom: 1rem;
-        }
-
-        .tech-badge {
-            background-color: var(--bg-light);
-            color: var(--primary-color);
-            padding: 0.25rem 0.75rem;
-            border-radius: 20px;
-            font-size: 0.85rem;
-            border: 1px solid var(--accent-color);
-        }
-
-        .project-description {
-            color: var(--text-light);
-            margin-bottom: 1rem;
-            line-height: 1.6;
-        }
-
-        .project-highlights {
-            list-style: none;
-            color: var(--text-light);
-            font-size: 0.9rem;
-        }
-
-        .project-highlights li {
-            margin-bottom: 0.5rem;
-        }
-
-        .project-highlights li::before {
-            content: '• ';
-            color: var(--accent-color);
-            margin-right: 0.5rem;
-        }
-
-        /* Education Section */
-        #education {
-            background-color: white;
-        }
-
-        .education-item {
-            background: var(--bg-light);
-            padding: 2rem;
-            margin-bottom: 1.5rem;
-            border-radius: 8px;
-            border-left: 5px solid var(--accent-color);
-        }
-
-        .education-item h3 {
-            color: var(--primary-color);
-            margin-bottom: 0.5rem;
-        }
-
-        .education-item .period {
-            color: var(--accent-color);
-            font-weight: bold;
-            font-size: 0.9rem;
-        }
-
-        .education-item p {
-            color: var(--text-light);
-            margin-top: 0.5rem;
-        }
-
-        /* Footer */
-        footer {
-            background-color: var(--primary-color);
-            color: white;
-            text-align: center;
-            padding: 2rem;
-        }
-
-        footer a {
-            color: white;
-            text-decoration: none;
-            margin: 0 1rem;
-            transition: opacity 0.3s;
-        }
-
-        footer a:hover {
-            opacity: 0.8;
-        }
-
-        /* Responsive */
-        @media (max-width: 768px) {
-            .hero h1 {
-                font-size: 2rem;
-            }
-
-            .hero .subtitle {
-                font-size: 1rem;
-            }
-
-            nav ul {
-                gap: 1rem;
-                font-size: 0.9rem;
-            }
-
-            section h2 {
-                font-size: 2rem;
-            }
-
-            .skills-grid {
-                grid-template-columns: 1fr;
-            }
-
-            .contact-info {
-                flex-direction: column;
-                gap: 1rem;
-            }
-        }
-
-        /* Animations */
-        @keyframes fadeInUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
-        }
-
-        section {
-            animation: fadeInUp 0.6s ease-out;
-        }
-
-        /* Back to top button */
-        .back-to-top {
-            position: fixed;
-            bottom: 2rem;
-            right: 2rem;
-            background-color: var(--primary-color);
-            color: white;
-            padding: 0.75rem 1rem;
-            border-radius: 50%;
-            cursor: pointer;
-            display: none;
-            width: 50px;
-            height: 50px;
-            align-items: center;
-            justify-content: center;
-            transition: background-color 0.3s;
-        }
-
-        .back-to-top:hover {
-            background-color: var(--secondary-color);
-        }
-
-        .back-to-top.show {
-            display: flex;
-        }
-    </style>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="description" content="An Van Dung — Fullstack Tech Lead. React, Vue.js, Java, Spring Boot, Microservices, AI/LLM. FPT Software.">
+<title>An Van Dung — Fullstack Tech Lead</title>
+<link href="https://fonts.googleapis.com/css2?family=DM+Serif+Display:ital@0;1&family=DM+Sans:ital,wght@0,300;0,400;0,500;1,300&display=swap" rel="stylesheet">
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+:root{
+  --ink:#0d1117;--ink2:#3d4451;--ink3:#7a8094;
+  --paper:#fafaf8;--card:#ffffff;--rule:#e8e5de;
+  --gold:#b8862a;--gold-bg:#fdf6e8;--gold-border:#edd99a;
+  --teal:#0e7c6e;--teal-bg:#e6f5f2;
+  --blue:#1a4e8a;--blue-bg:#eaf1fb;
+  --purple:#6d28d9;--purple-bg:#f3f0ff;
+}
+html{scroll-behavior:smooth}
+body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);line-height:1.7;overflow-x:hidden}
+nav{position:fixed;top:0;width:100%;z-index:200;padding:1rem 2.5rem;display:flex;justify-content:space-between;align-items:center;transition:all .3s}
+nav.scrolled{background:rgba(250,250,248,.96);backdrop-filter:blur(14px);border-bottom:1px solid var(--rule);box-shadow:0 1px 16px rgba(0,0,0,.05)}
+.nav-logo{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--ink);text-decoration:none}
+.nav-links{display:flex;gap:2rem;list-style:none}
+.nav-links a{color:var(--ink3);text-decoration:none;font-size:.8rem;font-weight:500;letter-spacing:.08em;text-transform:uppercase;transition:color .2s}
+.nav-links a:hover{color:var(--gold)}
+.hero{min-height:100vh;display:grid;grid-template-columns:1fr 420px;align-items:center;overflow:hidden}
+.hero-left{padding:7rem 3rem 4rem 5vw;background:var(--paper)}
+.hero-eyebrow{font-size:.72rem;letter-spacing:.2em;text-transform:uppercase;color:var(--teal);font-weight:500;margin-bottom:1rem;display:flex;align-items:center;gap:.6rem}
+.hero-eyebrow::before{content:'';display:block;width:28px;height:1px;background:var(--teal)}
+.hero-left h1{font-family:'DM Serif Display',serif;font-size:clamp(3rem,5.5vw,5rem);line-height:1.05;color:var(--ink);margin-bottom:1.4rem}
+.hero-left h1 em{font-style:italic;color:var(--gold)}
+.hero-desc{font-size:1rem;color:var(--ink2);max-width:460px;line-height:1.85;margin-bottom:2.2rem}
+.hero-contacts{display:flex;flex-direction:column;gap:.7rem}
+.hero-contacts a,.hero-contacts span{font-size:.9rem;color:var(--ink2);text-decoration:none;display:flex;align-items:center;gap:.75rem;transition:color .2s}
+.hero-contacts a:hover{color:var(--gold)}
+.c-dot{width:20px;height:20px;border-radius:50%;background:var(--gold-bg);border:1px solid var(--gold-border);display:flex;align-items:center;justify-content:center;font-size:10px;flex-shrink:0}
+.hero-right{height:100vh;position:relative;background:linear-gradient(160deg,var(--gold-bg) 0%,var(--teal-bg) 100%)}
+.hero-right img{width:100%;height:100%;object-fit:cover;object-position:center top;mix-blend-mode:multiply;opacity:.92}
+.hero-badge{position:absolute;bottom:2.5rem;left:-1.5rem;background:var(--ink);color:#fff;padding:.6rem 1.2rem;font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;border-radius:2px}
+section{padding:5.5rem 2rem}
+.container{max-width:1080px;margin:0 auto}
+.sec-label{font-size:.7rem;letter-spacing:.2em;text-transform:uppercase;color:var(--gold);font-weight:500;margin-bottom:.5rem}
+.sec-title{font-family:'DM Serif Display',serif;font-size:clamp(1.9rem,3vw,2.6rem);color:var(--ink);line-height:1.15;margin-bottom:3rem}
+.sec-title span{color:var(--teal)}
+#about{background:#fff;border-bottom:1px solid var(--rule)}
+.summary-text{font-size:1.05rem;color:var(--ink2);line-height:1.9;max-width:760px;border-left:3px solid var(--gold);padding-left:1.5rem}
+#skills{background:var(--paper)}
+.skills-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(230px,1fr));gap:1.2rem}
+.skill-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:1.6rem;position:relative;overflow:hidden;transition:transform .2s,box-shadow .2s}
+.skill-card:hover{transform:translateY(-4px);box-shadow:0 16px 36px rgba(0,0,0,.07)}
+.skill-card::after{content:'';position:absolute;bottom:0;left:0;right:0;height:3px}
+.skill-card.be::after{background:var(--blue)}
+.skill-card.fe::after{background:var(--gold)}
+.skill-card.ai::after{background:var(--teal)}
+.skill-card.ops::after{background:var(--purple)}
+.skill-icon{font-size:1.4rem;margin-bottom:.8rem}
+.skill-card h3{font-size:.78rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:500;margin-bottom:.9rem}
+.skill-card ul{list-style:none}
+.skill-card li{font-size:.88rem;color:var(--ink2);padding:.2rem 0;display:flex;align-items:baseline;gap:.5rem}
+.skill-card li::before{content:'—';color:var(--rule);font-size:.7rem;flex-shrink:0}
+#experience{background:#fff;border-top:1px solid var(--rule);border-bottom:1px solid var(--rule)}
+.exp-item{display:grid;grid-template-columns:180px 1fr;gap:2.5rem;padding:2.5rem 0;border-bottom:1px solid var(--rule)}
+.exp-item:last-child{border-bottom:none}
+.exp-period{font-size:.8rem;color:var(--gold);font-weight:500;margin-bottom:.4rem}
+.exp-company{font-size:.82rem;color:var(--ink3)}
+.exp-body h3{font-family:'DM Serif Display',serif;font-size:1.25rem;color:var(--ink);margin-bottom:.8rem}
+.exp-body ul{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.exp-body li{font-size:.92rem;color:var(--ink2);display:flex;gap:.7rem;align-items:baseline}
+.exp-body li::before{content:'·';color:var(--gold);font-size:1.2rem;line-height:1;flex-shrink:0}
+#projects{background:var(--paper)}
+.proj-list{display:flex;flex-direction:column;gap:2rem}
+.proj-card{background:var(--card);border:1px solid var(--rule);border-radius:8px;overflow:hidden;transition:box-shadow .2s}
+.proj-card:hover{box-shadow:0 12px 40px rgba(0,0,0,.07)}
+.proj-head{padding:1.8rem 2rem;border-bottom:1px solid var(--rule);display:grid;grid-template-columns:1fr auto;gap:1rem;align-items:start}
+.proj-name{font-family:'DM Serif Display',serif;font-size:1.35rem;color:var(--ink);margin-bottom:.4rem}
+.proj-role{font-size:.75rem;letter-spacing:.1em;text-transform:uppercase;color:var(--teal);font-weight:500}
+.proj-meta-grid{display:flex;gap:.6rem;flex-wrap:wrap;justify-content:flex-end}
+.meta-pill{font-size:.72rem;padding:.25rem .8rem;border-radius:20px;white-space:nowrap;font-weight:500}
+.meta-pill.team{background:var(--blue-bg);color:var(--blue)}
+.meta-pill.time{background:var(--gold-bg);color:var(--gold)}
+.proj-body{padding:1.8rem 2rem}
+.proj-stack{display:flex;flex-wrap:wrap;gap:.5rem;margin-bottom:1.5rem}
+.tech-tag{font-size:.75rem;padding:.2rem .7rem;border-radius:3px;background:var(--paper);border:1px solid var(--rule);color:var(--ink2)}
+.proj-cols{display:grid;grid-template-columns:repeat(3,1fr);gap:1.5rem}
+.proj-col h4{font-size:.72rem;letter-spacing:.12em;text-transform:uppercase;color:var(--ink3);font-weight:500;margin-bottom:.7rem;padding-bottom:.4rem;border-bottom:1px solid var(--rule)}
+.proj-col ul{list-style:none;display:flex;flex-direction:column;gap:.4rem}
+.proj-col li{font-size:.84rem;color:var(--ink2);line-height:1.55;display:flex;gap:.5rem;align-items:baseline}
+.proj-col li::before{content:'›';color:var(--gold);flex-shrink:0;font-size:.9rem}
+.proj-note{margin-top:1.2rem;padding-top:1.2rem;border-top:1px solid var(--rule);font-size:.85rem;color:var(--ink3);font-style:italic}
+#achievements{background:#fff;border-top:1px solid var(--rule)}
+.ach-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(280px,1fr));gap:1rem}
+.ach-item{display:flex;gap:1rem;align-items:flex-start;padding:1.2rem;border-radius:6px;border:1px solid var(--rule);background:var(--paper)}
+.ach-num{font-family:'DM Serif Display',serif;font-size:1.8rem;color:var(--gold);line-height:1;flex-shrink:0;min-width:2.8rem}
+.ach-text{font-size:.88rem;color:var(--ink2);line-height:1.55;padding-top:.3rem}
+#education{background:var(--paper)}
+.edu-grid{display:grid;grid-template-columns:1fr 1fr;gap:1.5rem}
+.edu-card{background:var(--card);border:1px solid var(--rule);border-radius:6px;padding:1.6rem}
+.edu-card h3{font-family:'DM Serif Display',serif;font-size:1.1rem;color:var(--ink);margin-bottom:.4rem}
+.edu-period{font-size:.78rem;color:var(--gold);font-weight:500;margin-bottom:.6rem}
+.edu-card p{font-size:.88rem;color:var(--ink2);line-height:1.6}
+.cert-list{list-style:none;display:flex;flex-direction:column;gap:.35rem}
+.cert-list li{font-size:.88rem;color:var(--ink2);display:flex;gap:.6rem;align-items:baseline}
+.cert-list li::before{content:'✓';color:var(--teal);font-size:.8rem;flex-shrink:0}
+#contact{background:var(--ink);color:#fff;text-align:center}
+#contact .sec-label{color:var(--gold-border)}
+#contact .sec-title{color:#fff;margin-bottom:1rem}
+#contact .sec-title span{color:var(--gold-border)}
+.contact-sub{font-size:1rem;color:rgba(255,255,255,.6);margin-bottom:3rem}
+.contact-btns{display:flex;justify-content:center;gap:1rem;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:.6rem;padding:.85rem 2rem;border-radius:4px;text-decoration:none;font-size:.9rem;font-weight:500;transition:all .2s}
+.btn-primary{background:var(--gold);color:#fff}
+.btn-primary:hover{background:#9a6e1e}
+.btn-outline{background:transparent;color:#fff;border:1px solid rgba(255,255,255,.3)}
+.btn-outline:hover{border-color:#fff;background:rgba(255,255,255,.06)}
+footer{background:#08090d;color:rgba(255,255,255,.4);text-align:center;padding:1.5rem 2rem;font-size:.8rem}
+.btt{position:fixed;bottom:2rem;right:2rem;width:42px;height:42px;background:var(--ink);color:#fff;border:none;border-radius:50%;cursor:pointer;font-size:1rem;display:none;align-items:center;justify-content:center;z-index:100;transition:background .2s}
+.btt.show{display:flex}
+.btt:hover{background:var(--gold)}
+@media(max-width:900px){
+  .hero{grid-template-columns:1fr}
+  .hero-left{padding:6rem 2rem 3rem}
+  .hero-right{height:60vw;min-height:280px}
+  .hero-badge{left:1rem;bottom:1rem}
+  .exp-item{grid-template-columns:1fr}
+  .proj-cols{grid-template-columns:1fr}
+  .edu-grid{grid-template-columns:1fr}
+}
+@media(max-width:600px){
+  .nav-links{display:none}
+  .proj-head{grid-template-columns:1fr}
+  .proj-meta-grid{justify-content:flex-start}
+}
+</style>
 </head>
 <body>
-    <!-- Navigation -->
-    <nav>
-        <div class="container">
-            <a href="#" class="logo">AVD</a>
-            <ul>
-                <li><a href="#about">About</a></li>
-                <li><a href="#skills">Skills</a></li>
-                <li><a href="#experience">Experience</a></li>
-                <li><a href="#projects">Projects</a></li>
-                <li><a href="#education">Education</a></li>
-                <li><a href="#contact">Contact</a></li>
-            </ul>
+
+<nav id="navbar">
+  <a href="#" class="nav-logo">AVD</a>
+  <ul class="nav-links">
+    <li><a href="#about">About</a></li>
+    <li><a href="#skills">Skills</a></li>
+    <li><a href="#experience">Experience</a></li>
+    <li><a href="#projects">Projects</a></li>
+    <li><a href="#achievements">Achievements</a></li>
+    <li><a href="#education">Education</a></li>
+    <li><a href="#contact">Contact</a></li>
+  </ul>
+</nav>
+
+<div class="hero" id="home">
+  <div class="hero-left">
+    <div class="hero-eyebrow">FPT Software · Hanoi</div>
+    <h1>An Van<br><em>Dung</em></h1>
+    <p class="hero-desc">Fullstack Tech Lead with 5+ years building enterprise-grade systems end-to-end — Java/Spring Boot backend, React/Vue.js frontend, and AI/LLM integration. Currently leading two strategic AI-driven projects at FPT Software.</p>
+    <div class="hero-contacts">
+      <span><span class="c-dot">📞</span>0789 315 557</span>
+      <a href="mailto:dungav1996@gmail.com"><span class="c-dot">✉</span>dungav1996@gmail.com</a>
+      <span><span class="c-dot">📍</span>Hanoi, Vietnam</span>
+    </div>
+  </div>
+  <div class="hero-right">
+    <img src="profile-photo.jpg" alt="An Van Dung">
+    <div class="hero-badge">Fullstack Tech Lead · 5+ Yrs</div>
+  </div>
+</div>
+
+<section id="about">
+  <div class="container">
+    <div class="sec-label">Professional Summary</div>
+    <div class="sec-title">Fullstack <span>Tech Lead</span></div>
+    <p class="summary-text">Fullstack Tech Lead with 5+ years at FPT Software, specializing in end-to-end web application development. Expertise spans Java/Spring Boot backend, React/Vue.js frontend, RESTful API design, and AI/LLM integration. Promoted from Java Developer → Fullstack Tech Lead (2023) → Fullstack Tech Lead/Sub PM (mid-2025). Currently leading 2 strategic AI-driven projects (SMMD &amp; MVPE), overseeing teams of 6–10 developers and delivering scalable, production-grade fullstack solutions on AWS/Kubernetes infrastructure.</p>
+  </div>
+</section>
+
+<section id="skills">
+  <div class="container">
+    <div class="sec-label">Core Competencies</div>
+    <div class="sec-title">Skills &amp; <span>Expertise</span></div>
+    <div class="skills-grid">
+      <div class="skill-card be"><div class="skill-icon">🖥️</div><h3>Backend</h3><ul><li>Java 8+, Spring Boot 3</li><li>Spring Cloud, Microservices</li><li>RESTful API, GraphQL</li><li>Spring Security, JWT / OAuth2</li><li>JPA / Hibernate, Spring Data</li></ul></div>
+      <div class="skill-card fe"><div class="skill-icon">🎨</div><h3>Frontend</h3><ul><li>React.js, TypeScript</li><li>Vue.js 3, Next.js</li><li>HTML5, CSS3, SCSS</li><li>Redux, Pinia, TailwindCSS</li><li>Jest, React Testing Library</li></ul></div>
+      <div class="skill-card ai"><div class="skill-icon">🤖</div><h3>AI &amp; Data</h3><ul><li>LLM Integration (OpenAI, Claude)</li><li>Langchain, RAG Pipeline</li><li>Vector DB (Pinecone, Qdrant)</li><li>PostgreSQL, MongoDB, Redis</li><li>Elasticsearch, Kafka</li></ul></div>
+      <div class="skill-card ops"><div class="skill-icon">☁️</div><h3>DevOps &amp; Cloud</h3><ul><li>AWS (EC2, S3, RDS, Lambda)</li><li>Docker, Kubernetes</li><li>CI/CD — GitHub Actions</li><li>Nginx, Load Balancing</li><li>Grafana, ELK Stack</li></ul></div>
+    </div>
+  </div>
+</section>
+
+<section id="experience">
+  <div class="container">
+    <div class="sec-label">Work History</div>
+    <div class="sec-title">Professional <span>Experience</span></div>
+    <div class="exp-list">
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-period">Mid 2025 – Present</div><div class="exp-company">FPT Software, Hanoi</div></div>
+        <div class="exp-body">
+          <h3>Fullstack Tech Lead / Sub Project Manager</h3>
+          <ul>
+            <li>Lead 2 strategic fullstack projects (SMMD &amp; MVPE) with AI-powered automation</li>
+            <li>Oversee end-to-end delivery: React frontend dashboards + Spring Boot backend APIs</li>
+            <li>Sprint planning, backlog grooming, risk management, stakeholder communication</li>
+            <li>Technical architecture decisions for both frontend and backend systems</li>
+            <li>Mentor 8–10 developers across full stack (React, Java, DevOps)</li>
+          </ul>
         </div>
-    </nav>
-
-    <!-- Hero Section -->
-    <section class="hero" id="about">
-        <div class="hero-content">
-            <img src="profile-photo.jpg" alt="An Van Dung - Java Developer & Tech Lead">
-            <h1>An Van Dung</h1>
-            <p class="subtitle">Java Developer & Tech Lead</p>
-            <p>
-                Passionate software engineer with 5+ years of experience building scalable enterprise applications. 
-                Specialized in Microservices Architecture, Spring Boot, and AI/LLM integration. 
-                Strong leader with proven track record of mentoring developers and delivering high-impact projects.
-            </p>
-            <div class="contact-info">
-                <span>📞 0789 315 557</span>
-                <a href="mailto:dungav1996@gmail.com">📧 dungav1996@gmail.com</a>
-                <a href="https://github.com" target="_blank">💼 GitHub</a>
-            </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-period">2023 – Mid 2025</div><div class="exp-company">FPT Software, Hanoi</div></div>
+        <div class="exp-body">
+          <h3>Fullstack Tech Lead</h3>
+          <ul>
+            <li>Designed fullstack microservices architecture for enterprise-scale platforms</li>
+            <li>Led frontend migration from legacy JSP to modern React.js + TypeScript SPA</li>
+            <li>Implemented CI/CD pipelines, Docker containerization, Kubernetes orchestration</li>
+            <li>Code review across React, Java, SQL, and infrastructure-as-code</li>
+            <li>Reduced frontend load time 60% via code splitting, lazy loading, CDN optimization</li>
+            <li>Participated in hiring &amp; technical interviews for fullstack positions</li>
+          </ul>
         </div>
-    </section>
-
-    <!-- Skills Section -->
-    <section id="skills">
-        <h2>Skills & Expertise</h2>
-        <div class="skills-grid">
-            <div class="skill-category">
-                <h3>Backend Technologies</h3>
-                <ul>
-                    <li>Java 8+, Spring Boot, Spring Framework</li>
-                    <li>Spring Cloud, Microservices Architecture</li>
-                    <li>RESTful API Development</li>
-                    <li>Spring Data, JPA/Hibernate</li>
-                    <li>JWT, OAuth 2.0 Security</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>AI & Infrastructure</h3>
-                <ul>
-                    <li>LLM Integration (OpenAI, Claude)</li>
-                    <li>Langchain, RAG, Vector DB (Pinecone)</li>
-                    <li>PostgreSQL, MongoDB, Redis</li>
-                    <li>AWS EC2, S3, RDS, Lambda</li>
-                    <li>Docker, Kubernetes, Kafka</li>
-                </ul>
-            </div>
-
-            <div class="skill-category">
-                <h3>Development & Leadership</h3>
-                <ul>
-                    <li>Git, GitHub, GitLab, Maven, Gradle</li>
-                    <li>JUnit, Mockito, TestNG</li>
-                    <li>Team Leadership & Mentoring</li>
-                    <li>Project Management, Agile/Scrum</li>
-                    <li>System Architecture Design</li>
-                </ul>
-            </div>
+      </div>
+      <div class="exp-item">
+        <div class="exp-meta"><div class="exp-period">Jun 2021 – 2023</div><div class="exp-company">FPT Software, Hanoi</div></div>
+        <div class="exp-body">
+          <h3>Java Developer</h3>
+          <ul>
+            <li>Built RESTful backend services with Java Spring Boot</li>
+            <li>Developed React.js frontend components integrated with backend APIs</li>
+            <li>Wrote unit/integration tests — frontend (Jest) and backend (JUnit/Mockito)</li>
+            <li>Optimized SQL queries and Redis caching, improved API response time 40%</li>
+            <li>Collaborated with UI/UX designers to implement pixel-perfect interfaces</li>
+          </ul>
         </div>
-    </section>
+      </div>
+    </div>
+  </div>
+</section>
 
-    <!-- Experience Section -->
-    <section id="experience">
-        <h2>Work Experience</h2>
+<section id="projects">
+  <div class="container">
+    <div class="sec-label">Strategic Projects</div>
+    <div class="sec-title">Key <span>Projects</span></div>
+    <div class="proj-list">
 
-        <div class="experience-item">
-            <h3>Team Lead / Sub Project Manager</h3>
-            <div class="period">Mid 2025 - Present | FPT Software, Hanoi</div>
-            <ul>
-                <li>Lead 2 strategic projects: MDMS and EMVP with team of 8-10 developers</li>
-                <li>Manage project timeline, scope, and resource allocation</li>
-                <li>Mentoring developers, code review, and technical guidance</li>
-                <li>Coordinate with stakeholders, clients, and cross-functional teams</li>
-                <li>Risk management and delivery assurance</li>
-            </ul>
+      <div class="proj-card">
+        <div class="proj-head">
+          <div><div class="proj-name">SMMD — Meter Data Management System</div><div class="proj-role">Fullstack Tech Lead / Sub PM</div></div>
+          <div class="proj-meta-grid"><span class="meta-pill team">8–10 Developers</span><span class="meta-pill time">Jun 2025 – Oct 2025</span></div>
         </div>
-
-        <div class="experience-item">
-            <h3>Tech Lead</h3>
-            <div class="period">2023 - Mid 2025 | FPT Software, Hanoi</div>
-            <ul>
-                <li>Design system architecture and technical direction for multiple projects</li>
-                <li>Code review, mentoring developers, resolve technical issues</li>
-                <li>Implement Microservices architecture and performance optimization</li>
-                <li>Build CI/CD pipelines and infrastructure as code</li>
-                <li>Participate in hiring and technical interviews</li>
-            </ul>
+        <div class="proj-body">
+          <div class="proj-stack"><span class="tech-tag">React.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Redux</span><span class="tech-tag">TailwindCSS</span><span class="tech-tag">Java</span><span class="tech-tag">Spring Boot 3</span><span class="tech-tag">Spring Cloud</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span><span class="tech-tag">Kafka</span><span class="tech-tag">LLM</span><span class="tech-tag">Langchain</span><span class="tech-tag">Pinecone</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">AWS</span></div>
+          <div class="proj-cols">
+            <div class="proj-col"><h4>Frontend</h4><ul><li>Real-time monitoring dashboard — live charts (Recharts/D3.js), meter data visualization, alert management UI</li><li>AI code generation UI — drag-drop DD upload, streaming response, code preview with syntax highlighting</li><li>Admin portal with RBAC, user management, system config (TailwindCSS + Shadcn/UI)</li></ul></div>
+            <div class="proj-col"><h4>Backend</h4><ul><li>Agent + Skill AI system — auto-generates source code from Design Documents, 70%+ automation rate</li><li>AI-powered Unit Test generation with C0 (Statement) &amp; C1 (Branch) coverage</li><li>Event-driven microservices with Kafka — 50M+ data points/day, 1M+ concurrent users</li></ul></div>
+            <div class="proj-col"><h4>DevOps</h4><ul><li>Kubernetes auto-scaling, blue-green deployment on AWS</li></ul></div>
+          </div>
+          <div class="proj-note">Led daily standups, sprint reviews, client demos; coordinated Japan-side stakeholders</div>
         </div>
+      </div>
 
-        <div class="experience-item">
-            <h3>Java Developer</h3>
-            <div class="period">June 2021 - 2023 | FPT Software, Hanoi</div>
-            <ul>
-                <li>Develop backend services using Java, Spring Boot, and Microservices</li>
-                <li>Build RESTful APIs and optimize database performance</li>
-                <li>Write unit tests and integration tests (80%+ coverage)</li>
-                <li>Debug and fix production issues, maintain system stability</li>
-                <li>Collaborate with frontend, QA, and system admin teams</li>
-            </ul>
+      <div class="proj-card">
+        <div class="proj-head">
+          <div><div class="proj-name">MVPE — Enterprise Management &amp; Visualization Platform</div><div class="proj-role">Fullstack Tech Lead / Sub PM</div></div>
+          <div class="proj-meta-grid"><span class="meta-pill team">6–8 Developers</span><span class="meta-pill time">Oct 2025 – Present</span></div>
         </div>
-    </section>
-
-    <!-- Projects Section -->
-    <section id="projects">
-        <h2>Strategic Projects</h2>
-        <div class="projects-grid">
-            <div class="project-card">
-                <div class="project-card-header">
-                    <h3>MDMS Project</h3>
-                </div>
-                <div class="project-card-body">
-                    <div class="project-tech">
-                        <span class="tech-badge">Java</span>
-                        <span class="tech-badge">Spring Boot</span>
-                        <span class="tech-badge">AI/LLM</span>
-                        <span class="tech-badge">Kubernetes</span>
-                    </div>
-                    <p class="project-description">
-                        Meter Data Management System for Japanese electricity company. Built Agent + Skill system for auto-generating code from Design Documents with 70% automation.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge" style="background: #fff3cd; color: #856404;">Tech Lead / Sub PM</span>
-                    </div>
-                    <ul class="project-highlights">
-                        <li>Auto-generate source code and Unit Tests (C0 & C1 coverage)</li>
-                        <li>Process 50M+ data points/day, support 1M+ concurrent users</li>
-                        <li>Lead team of 8-10 developers</li>
-                        <li>Timeline: June 2025 - October 2025</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-card-header">
-                    <h3>EMVP Project</h3>
-                </div>
-                <div class="project-card-body">
-                    <div class="project-tech">
-                        <span class="tech-badge">Java</span>
-                        <span class="tech-badge">Spring Boot</span>
-                        <span class="tech-badge">Elasticsearch</span>
-                        <span class="tech-badge">Kafka</span>
-                    </div>
-                    <p class="project-description">
-                        Enterprise Management & Visualization Platform. Multi-tenant architecture with real-time analytics and AI-powered automation.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge" style="background: #fff3cd; color: #856404;">Team Lead / Sub PM</span>
-                    </div>
-                    <ul class="project-highlights">
-                        <li>Support 500K+ concurrent users with 99.99% uptime SLA</li>
-                        <li>AI UT script generation and code review automation</li>
-                        <li>Lead team of 6-8 developers</li>
-                        <li>Timeline: October 2025 - Present</li>
-                    </ul>
-                </div>
-            </div>
-
-            <div class="project-card">
-                <div class="project-card-header">
-                    <h3>E-Commerce Platform</h3>
-                </div>
-                <div class="project-card-body">
-                    <div class="project-tech">
-                        <span class="tech-badge">Microservices</span>
-                        <span class="tech-badge">PostgreSQL</span>
-                        <span class="tech-badge">Kafka</span>
-                        <span class="tech-badge">AWS</span>
-                    </div>
-                    <p class="project-description">
-                        Complete e-commerce backend platform with microservices architecture. Handles 100K+ requests/day with complex order processing.
-                    </p>
-                    <div class="project-tech">
-                        <span class="tech-badge" style="background: #fff3cd; color: #856404;">Tech Lead</span>
-                    </div>
-                    <ul class="project-highlights">
-                        <li>100K+ requests/day, 500+ concurrent users</li>
-                        <li>SAGA pattern for distributed transactions</li>
-                        <li>99.9% uptime, 80%+ code coverage</li>
-                        <li>Timeline: 2023 - 2025</li>
-                    </ul>
-                </div>
-            </div>
+        <div class="proj-body">
+          <div class="proj-stack"><span class="tech-tag">Vue.js 3</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Pinia</span><span class="tech-tag">Vite</span><span class="tech-tag">ECharts</span><span class="tech-tag">Java</span><span class="tech-tag">Spring Boot 3</span><span class="tech-tag">Elasticsearch</span><span class="tech-tag">Kafka</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span><span class="tech-tag">MongoDB</span><span class="tech-tag">Docker</span><span class="tech-tag">AWS ECS</span><span class="tech-tag">GitHub Actions</span></div>
+          <div class="proj-cols">
+            <div class="proj-col"><h4>Frontend</h4><ul><li>Advanced visualization engine (Vue.js 3 + ECharts) — dynamic dashboards, real-time data via WebSocket</li><li>Multi-tenant UI — tenant-aware routing, white-labeling, isolated component namespaces per client</li><li>AI Assistant UI — natural language to code interface, live diff viewer, automated test report dashboard</li></ul></div>
+            <div class="proj-col"><h4>Backend</h4><ul><li>Agent + Skill AI system — auto-generates code &amp; Unit Tests (C0/C1) from Design Documents, 65%+ automation</li><li>Elasticsearch full-text search sub-100ms; multi-tenant RBAC with row-level security in PostgreSQL</li><li>Kafka real-time analytics pipeline — 500K+ concurrent users, 99.99% uptime SLA</li></ul></div>
+            <div class="proj-col"><h4>DevOps</h4><ul><li>CI/CD with GitHub Actions — zero-downtime rolling updates on AWS ECS</li></ul></div>
+          </div>
+          <div class="proj-note">Gathered stakeholder feedback, delivered 3 major releases on schedule</div>
         </div>
-    </section>
+      </div>
 
-    <!-- Education Section -->
-    <section id="education">
-        <h2>Education & Certifications</h2>
-
-        <div class="education-item">
-            <h3>Associate Degree in Information Technology</h3>
-            <div class="period">2018 - 2021</div>
-            <p><strong>FPT Polytechnic College</strong><br>
-            Software Application Major | GPA: Good<br>
-            Foundation knowledge in programming, databases, and system design</p>
+      <div class="proj-card">
+        <div class="proj-head">
+          <div><div class="proj-name">E-Commerce Backend Platform</div><div class="proj-role">Fullstack Tech Lead</div></div>
+          <div class="proj-meta-grid"><span class="meta-pill team">6–8 Developers</span><span class="meta-pill time">2023 – 2025</span></div>
         </div>
-
-        <div class="education-item">
-            <h3>Certifications & Training</h3>
-            <p>
-                ✓ English Topnotch Level 2.2 - FPT Polytechnic (2021)<br>
-                ✓ Spring Boot & Microservices Training - FPT Software<br>
-                ✓ AI/LLM Integration & Langchain Training<br>
-                ✓ Team Leadership & Project Management Training
-            </p>
+        <div class="proj-body">
+          <div class="proj-stack"><span class="tech-tag">React.js</span><span class="tech-tag">TypeScript</span><span class="tech-tag">Java</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">PostgreSQL</span><span class="tech-tag">Redis</span><span class="tech-tag">Kafka</span><span class="tech-tag">Docker</span><span class="tech-tag">Kubernetes</span><span class="tech-tag">AWS</span></div>
+          <div class="proj-cols">
+            <div class="proj-col"><h4>Frontend</h4><ul><li>React.js storefront — product catalog, cart, checkout flow, order tracking; real-time status via WebSocket</li><li>Payment UI integration with Stripe &amp; VNPay</li></ul></div>
+            <div class="proj-col"><h4>Backend</h4><ul><li>Microservices architecture — 100K+ requests/day, SAGA pattern for distributed transactions</li></ul></div>
+            <div class="proj-col"><h4>Results</h4><ul><li>80%+ code coverage (Jest + JUnit)</li><li>99.9% uptime in production</li></ul></div>
+          </div>
         </div>
-    </section>
+      </div>
 
-    <!-- Contact Section -->
-    <section id="contact" style="background-color: var(--bg-light); text-align: center;">
-        <h2>Get In Touch</h2>
-        <p style="font-size: 1.1rem; margin-bottom: 2rem; color: var(--text-light);">
-            Feel free to reach out for opportunities, collaborations, or just to say hello!
-        </p>
-        <div style="display: flex; justify-content: center; gap: 2rem; flex-wrap: wrap;">
-            <a href="tel:0789315557" style="
-                display: inline-block;
-                background-color: var(--accent-color);
-                color: white;
-                padding: 0.75rem 1.5rem;
-                border-radius: 5px;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            " onmouseover="this.style.backgroundColor='var(--primary-color)'" onmouseout="this.style.backgroundColor='var(--accent-color)'">
-                📞 Call Me
-            </a>
-            <a href="mailto:dungav1996@gmail.com" style="
-                display: inline-block;
-                background-color: var(--accent-color);
-                color: white;
-                padding: 0.75rem 1.5rem;
-                border-radius: 5px;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            " onmouseover="this.style.backgroundColor='var(--primary-color)'" onmouseout="this.style.backgroundColor='var(--accent-color)'">
-                📧 Email Me
-            </a>
-            <a href="https://github.com" target="_blank" style="
-                display: inline-block;
-                background-color: var(--accent-color);
-                color: white;
-                padding: 0.75rem 1.5rem;
-                border-radius: 5px;
-                text-decoration: none;
-                transition: background-color 0.3s;
-            " onmouseover="this.style.backgroundColor='var(--primary-color)'" onmouseout="this.style.backgroundColor='var(--accent-color)'">
-                💼 GitHub
-            </a>
+      <div class="proj-card">
+        <div class="proj-head">
+          <div><div class="proj-name">Real-time Notification System</div><div class="proj-role">Senior Fullstack Developer</div></div>
+          <div class="proj-meta-grid"><span class="meta-pill team">3 Developers</span><span class="meta-pill time">2022 – 2023</span></div>
         </div>
-    </section>
+        <div class="proj-body">
+          <div class="proj-stack"><span class="tech-tag">React.js</span><span class="tech-tag">WebSocket</span><span class="tech-tag">Spring Boot</span><span class="tech-tag">Kafka</span><span class="tech-tag">Redis</span><span class="tech-tag">MongoDB</span></div>
+          <div class="proj-cols">
+            <div class="proj-col"><h4>Frontend</h4><ul><li>Notification center UI (React) — real-time toast alerts, inbox with read/unread states</li></ul></div>
+            <div class="proj-col"><h4>Backend</h4><ul><li>WebSocket server + Kafka queue + Redis caching — 100K+ concurrent users, &lt;100ms delivery latency</li></ul></div>
+            <div class="proj-col"></div>
+          </div>
+        </div>
+      </div>
 
-    <!-- Footer -->
-    <footer>
-        <p>&copy; 2025 An Van Dung. All rights reserved.</p>
-        <p style="font-size: 0.9rem; margin-top: 1rem; opacity: 0.8;">
-            Java Developer & Tech Lead | FPT Software
-        </p>
-    </footer>
+    </div>
+  </div>
+</section>
 
-    <!-- Back to Top Button -->
-    <div class="back-to-top" onclick="scrollToTop()">↑</div>
+<section id="achievements">
+  <div class="container">
+    <div class="sec-label">Key Achievements</div>
+    <div class="sec-title">Impact &amp; <span>Results</span></div>
+    <div class="ach-grid">
+      <div class="ach-item"><div class="ach-num">↑</div><div class="ach-text">Promoted: Java Developer → Fullstack Tech Lead (2023) → Tech Lead/Sub PM (2025)</div></div>
+      <div class="ach-item"><div class="ach-num">70%</div><div class="ach-text">Code generation automation — AI tool saving ~40 dev-hours/sprint in SMMD</div></div>
+      <div class="ach-item"><div class="ach-num">60%</div><div class="ach-text">Frontend load time reduction via React lazy loading, code splitting &amp; CDN</div></div>
+      <div class="ach-item"><div class="ach-num">40%</div><div class="ach-text">Infrastructure cost reduction via Kubernetes auto-scaling and spot instances</div></div>
+      <div class="ach-item"><div class="ach-num">5+</div><div class="ach-text">Junior developers mentored in React, Java, and fullstack best practices</div></div>
+      <div class="ach-item"><div class="ach-num">99.9%</div><div class="ach-text">Uptime maintained across all production systems</div></div>
+    </div>
+  </div>
+</section>
 
-    <script>
-        // Smooth scroll for navigation links
-        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-            anchor.addEventListener('click', function (e) {
-                e.preventDefault();
-                const target = document.querySelector(this.getAttribute('href'));
-                if (target) {
-                    target.scrollIntoView({
-                        behavior: 'smooth',
-                        block: 'start'
-                    });
-                }
-            });
-        });
+<section id="education">
+  <div class="container">
+    <div class="sec-label">Background</div>
+    <div class="sec-title">Education &amp; <span>Certifications</span></div>
+    <div class="edu-grid">
+      <div class="edu-card">
+        <h3>Associate Degree in Information Technology</h3>
+        <div class="edu-period">2018 – 2021</div>
+        <p>FPT Polytechnic College · Software Application Major · GPA: Good<br>Foundation in programming, databases, and system design</p>
+      </div>
+      <div class="edu-card">
+        <h3>Certifications &amp; Training</h3>
+        <div class="edu-period">2021 – Present</div>
+        <ul class="cert-list">
+          <li>English Topnotch Level 2.2 — FPT Polytechnic (2021)</li>
+          <li>React.js Advanced Development — Udemy / Self-study</li>
+          <li>Spring Boot &amp; Microservices Training — FPT Software</li>
+          <li>AI/LLM Integration &amp; Langchain Training — FPT Software</li>
+          <li>Team Leadership &amp; Project Management — FPT Software</li>
+          <li>AWS Cloud Practitioner (in progress)</li>
+        </ul>
+      </div>
+    </div>
+  </div>
+</section>
 
-        // Back to top button
-        window.addEventListener('scroll', function() {
-            const btn = document.querySelector('.back-to-top');
-            if (window.pageYOffset > 300) {
-                btn.classList.add('show');
-            } else {
-                btn.classList.remove('show');
-            }
-        });
+<section id="contact">
+  <div class="container">
+    <div class="sec-label">Get In Touch</div>
+    <div class="sec-title">Let's <span>Connect</span></div>
+    <p class="contact-sub">Open to opportunities, collaborations, or technical discussions.</p>
+    <div class="contact-btns">
+      <a href="tel:0789315557" class="btn btn-primary">📞 0789 315 557</a>
+      <a href="mailto:dungav1996@gmail.com" class="btn btn-outline">✉ dungav1996@gmail.com</a>
+      <a href="https://github.com/DungAV1996" target="_blank" class="btn btn-outline">⌥ GitHub</a>
+    </div>
+  </div>
+</section>
 
-        function scrollToTop() {
-            window.scrollTo({
-                top: 0,
-                behavior: 'smooth'
-            });
-        }
+<footer><p>© 2025 An Van Dung · Fullstack Tech Lead · FPT Software</p></footer>
+<button class="btt" id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</button>
 
-        // Active navigation link
-        window.addEventListener('scroll', function() {
-            let current = '';
-            const sections = document.querySelectorAll('section');
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                if (pageYOffset >= sectionTop - 200) {
-                    current = section.getAttribute('id');
-                }
-            });
-
-            document.querySelectorAll('nav a').forEach(link => {
-                link.style.color = 'white';
-                if (link.getAttribute('href').slice(1) === current) {
-                    link.style.color = '#ffeb3b';
-                }
-            });
-        });
-    </script>
+<script>
+const nav=document.getElementById('navbar'),btt=document.getElementById('btt');
+window.addEventListener('scroll',()=>{
+  nav.classList.toggle('scrolled',window.scrollY>40);
+  btt.classList.toggle('show',window.scrollY>400);
+});
+document.querySelectorAll('a[href^="#"]').forEach(a=>{
+  a.addEventListener('click',e=>{
+    const t=document.querySelector(a.getAttribute('href'));
+    if(t){e.preventDefault();t.scrollIntoView({behavior:'smooth',block:'start'})}
+  });
+});
+</script>
 </body>
 </html>
